@@ -1,9 +1,20 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { Feather as Icon } from '@expo/vector-icons';
 
 const Points = () => {
-  return <View />
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity>
+        <Icon name="arrow-left" size={20} color="#34cb79" />
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
