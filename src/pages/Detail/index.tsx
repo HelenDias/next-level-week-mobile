@@ -28,8 +28,22 @@ const Detail = () => {
         source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
       />
 
-      <Text style={styles.pointName}>Colégio La Salle</Text>
-      <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
+      <Text style={styles.pointName}>
+        Colégio La Salle
+      </Text>
+      <Text style={styles.pointItems}>
+        Lâmpadas, Óleo de Cozinha
+      </Text>
+
+      <View style={styles.address}>
+        <Text style={styles.addressTitle}>
+          Endereço
+        </Text>
+
+        <Text style={styles.addressContent}>
+          Botucatu, SP
+        </Text>
+      </View>
     </View>
   );
 };
