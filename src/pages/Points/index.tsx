@@ -40,7 +40,11 @@ const Points = () => {
       </View>
 
       <View style={styles.itemsContainer}>
-        <ScrollView horizontal>
+        <ScrollView
+          horizontal
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+        >
           <TouchableOpacity style={styles.item} onPress={() => {}}>
             <SvgUri
               width={42}
