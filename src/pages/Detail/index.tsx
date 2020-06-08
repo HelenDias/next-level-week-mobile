@@ -21,15 +21,15 @@ const Detail = () => {
     <View style={styles.container}>
       <TouchableOpacity onPress={handleNavigateBack}>
         <Icon name="arrow-left" size={20} color="#34cb79" />
-
-        <Image
-          style={styles.pointImage}
-          source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
-        />
-
-        <Text style={styles.pointName}>Colégio La Salle</Text>
-        <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
       </TouchableOpacity>
+
+      <Image
+        style={styles.pointImage}
+        source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+      />
+
+      <Text style={styles.pointName}>Colégio La Salle</Text>
+      <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
     </View>
   );
 };
