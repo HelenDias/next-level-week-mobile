@@ -1,10 +1,36 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Constants from 'expo-constants';
+import { useNavigation } from '@react-navigation/native';
+import { Feather as Icon } from '@expo/vector-icons';
 
 const Detail = () => {
+  const navigation = useNavigation();
+
+  function handleNavigateBack() {
+    navigation.goBack();
+  }
+
   return (
-    <View></View>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={handleNavigateBack}>
+        <Icon name="arrow-left" size={20} color="#34cb79" />
+
+        <Image
+          style={styles.pointImage}
+          source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+        />
+
+        <Text style={styles.pointName}>Colégio La Salle</Text>
+        <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -63,7 +89,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  
+
   button: {
     width: '48%',
     backgroundColor: '#34CB79',
