@@ -110,8 +110,11 @@ const Points = () => {
             items.map(item => (
               <TouchableOpacity
                 key={String(item.id)}
-                style={styles.item}
-                onPress={() => {}}
+                style={[
+                  styles.item,
+                  selectedItems.includes(item.id) ? styles.selectedItem : {},
+                ]}
+                onPress={() => handleSelectItem(item.id)}
                 activeOpacity={0.5}
               >
                 <SvgUri
