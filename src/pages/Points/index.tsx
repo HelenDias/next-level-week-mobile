@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import MapView from 'react-native-maps';
 
 const Points = () => {
   const navigation = useNavigation();
@@ -29,6 +30,10 @@ const Points = () => {
       <Text style={styles.description}>
         Encontre no mapa um ponto de coleta.
       </Text>
+
+      <View style={styles.mapContainer}>
+        <MapView style={styles.map} />
+      </View>
     </View>
   );
 };
