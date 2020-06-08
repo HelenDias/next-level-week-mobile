@@ -44,8 +44,54 @@ const Points = () => {
             width={42}
             height={42}
             onPress={() => {}}
-            uri=""
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
           />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => {}}>
+          <SvgUri
+            width={42}
+            height={42}
+            onPress={() => {}}
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
+          />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => {}}>
+          <SvgUri
+            width={42}
+            height={42}
+            onPress={() => {}}
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
+          />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => {}}>
+          <SvgUri
+            width={42}
+            height={42}
+            onPress={() => {}}
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
+          />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => {}}>
+          <SvgUri
+            width={42}
+            height={42}
+            onPress={() => {}}
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
+          />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => {}}>
+          <SvgUri
+            width={42}
+            height={42}
+            onPress={() => {}}
+            uri="http://192.168.0.114:4000/uploads/lampadas.svg"
+          />
+          <Text style={styles.itemTitle}>Lâmpadas</Text>
         </TouchableOpacity>
       </View>
     </>
