@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { useNavigation } from '@react-navigation/native';
-import { Feather as Icon } from '@expo/vector-icons';
+import { Feather as Icon, FontAwesome } from '@expo/vector-icons';
+import { RectButton } from 'react-native-gesture-handler';
 
 const Detail = () => {
   const navigation = useNavigation();
@@ -18,33 +19,46 @@ const Detail = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={handleNavigateBack}>
-        <Icon name="arrow-left" size={20} color="#34cb79" />
-      </TouchableOpacity>
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleNavigateBack}>
+          <Icon name="arrow-left" size={20} color="#34cb79" />
+        </TouchableOpacity>
 
-      <Image
-        style={styles.pointImage}
-        source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
-      />
+        <Image
+          style={styles.pointImage}
+          source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+        />
 
-      <Text style={styles.pointName}>
-        Colégio La Salle
-      </Text>
-      <Text style={styles.pointItems}>
-        Lâmpadas, Óleo de Cozinha
-      </Text>
-
-      <View style={styles.address}>
-        <Text style={styles.addressTitle}>
-          Endereço
+        <Text style={styles.pointName}>
+          Colégio La Salle
+        </Text>
+        <Text style={styles.pointItems}>
+          Lâmpadas, Óleo de Cozinha
         </Text>
 
-        <Text style={styles.addressContent}>
-          Botucatu, SP
-        </Text>
+        <View style={styles.address}>
+          <Text style={styles.addressTitle}>
+            Endereço
+          </Text>
+
+          <Text style={styles.addressContent}>
+            Botucatu, SP
+          </Text>
+        </View>
       </View>
-    </View>
+
+      <View style={styles.footer}>
+        <RectButton style={styles.button} onPress={() => {}}>
+          <FontAwesome
+            name="whatsapp"
+            size={20}
+            color="#FFF"
+          />
+          <Text style={styles.buttonText}>Whatsapp</Text>
+        </RectButton>
+      </View>
+    </>
   );
 };
 
