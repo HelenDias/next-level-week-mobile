@@ -23,6 +23,7 @@ interface Item {
 
 const Points = () => {
   const [items, setItems] = useState<Item[]>([]);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const navigation = useNavigation();
 
@@ -37,6 +38,21 @@ const Points = () => {
 
   function handlenavigateToDetail() {
     navigation.navigate('Detail');
+  }
+
+  function handleSelectItem(id: number) {
+    const alreadySelected = selectedItems.findIndex(item => item === id);
+
+    if (alreadySelected >= 0) {
+      const filteredItems = selectedItems.filter(item => item !== id);
+
+      return setSelectedItems(filteredItems);
+    }
+
+    return setSelectedItems([
+      ...selectedItems,
+      id,
+    ]);
   }
 
   return (
@@ -96,6 +112,7 @@ const Points = () => {
                 key={String(item.id)}
                 style={styles.item}
                 onPress={() => {}}
+                activeOpacity={0.5}
               >
                 <SvgUri
                   width={42}
