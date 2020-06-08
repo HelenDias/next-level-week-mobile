@@ -8,11 +8,13 @@ import {
   ScrollView,
   TouchableOpacity,
   ImageBase,
+  Alert,
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';
+import * as Location from 'expo-location';
 import api from '../../services/app';
 
 interface Item {
@@ -24,12 +26,33 @@ interface Item {
 const Points = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [initialPosition, setInitialPosition] = useState<number[]>([-22.9472615, -48.4487479]);
 
   const navigation = useNavigation();
 
   useEffect(() => {
     api.get('items')
       .then(response => setItems(response.data));
+  }, []);
+
+  useEffect(() => {
+    async function loadPosition() {
+      const { status } = await Location.requestPermissionsAsync();
+
+      if (status !== 'granted') {
+        Alert.alert('Oooops..', 'Precisamos da sua permissão para acessar a sua localização');
+        return;
+      }
+
+      const location = await Location.getCurrentPositionAsync();
+
+      const { latitude, longitude } = location.coords;
+
+      return setInitialPosition([
+        latitude,
+        longitude,
+      ]);
+    }
   }, []);
 
   function handleNavigateBack() {
@@ -71,32 +94,36 @@ const Points = () => {
         </Text>
 
         <View style={styles.mapContainer}>
-          <MapView
-            initialRegion={{
-              latitude: -22.9472615,
-              longitude: -48.4487479,
-              latitudeDelta: 0.014,
-              longitudeDelta: 0.014,
-            }}
-            style={styles.map}
-          >
-            <Marker
-              coordinate={{
-                latitude: -22.9472615,
-                longitude: -48.4487479,
-              }}
-              style={styles.mapMarker}
-              onPress={handlenavigateToDetail}
-            >
-              <View style={styles.mapMarkerContainer}>
-                <Image
-                  style={styles.mapMarkerImage}
-                  source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
-                />
-                <Text style={styles.mapMarkerTitle}>Colégio La Salle</Text>
-              </View>
-            </Marker>
-          </MapView>
+          {
+            initialPosition[0] !== 0 && (
+              <MapView
+                initialRegion={{
+                  latitude: initialPosition[0],
+                  longitude: initialPosition[1],
+                  latitudeDelta: 0.014,
+                  longitudeDelta: 0.014,
+                }}
+                style={styles.map}
+              >
+                <Marker
+                  coordinate={{
+                    latitude: -22.9472615,
+                    longitude: -48.4487479,
+                  }}
+                  style={styles.mapMarker}
+                  onPress={handlenavigateToDetail}
+                >
+                  <View style={styles.mapMarkerContainer}>
+                    <Image
+                      style={styles.mapMarkerImage}
+                      source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+                    />
+                    <Text style={styles.mapMarkerTitle}>Colégio La Salle</Text>
+                  </View>
+                </Marker>
+              </MapView>
+            )
+          }
         </View>
       </View>
 
