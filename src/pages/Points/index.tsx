@@ -3,13 +3,15 @@ import Constants from 'expo-constants';
 import {
   Text,
   View,
+  Image,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  ImageBase,
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';
 
 const Points = () => {
@@ -43,7 +45,19 @@ const Points = () => {
               longitudeDelta: 0.014,
             }}
             style={styles.map}
-          />
+          >
+            <Marker
+              coordinate={{
+                latitude: -22.9472615,
+                longitude: -48.4487479,
+              }}
+            >
+              <Image
+                style={styles.mapMarkerImage}
+                source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+              />
+            </Marker>
+          </MapView>
         </View>
       </View>
 
