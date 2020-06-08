@@ -21,6 +21,10 @@ const Points = () => {
     navigation.goBack();
   }
 
+  function handlenavigateToDetail() {
+    navigation.navigate('Detail');
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -51,11 +55,16 @@ const Points = () => {
                 latitude: -22.9472615,
                 longitude: -48.4487479,
               }}
+              style={styles.mapMarker}
+              onPress={handlenavigateToDetail}
             >
-              <Image
-                style={styles.mapMarkerImage}
-                source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
-              />
+              <View style={styles.mapMarkerContainer}>
+                <Image
+                  style={styles.mapMarkerImage}
+                  source={{ uri: 'https://www.rbsdirect.com.br/imagesrc/25438120.jpg?w=700' }}
+                />
+                <Text style={styles.mapMarkerTitle}>Colégio La Salle</Text>
+              </View>
             </Marker>
           </MapView>
         </View>
